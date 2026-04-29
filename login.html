@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AeroMiles</title>
+    <link rel="stylesheet" href="global.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.4615 6.72485L22.5586 1.62616C23.1325 1.06164 23.9061 0.746734 24.7111 0.750026C25.516 0.753318 26.2871 1.07454 26.8563 1.64374C27.4255 2.21293 27.7467 2.98398 27.75 3.78893C27.7533 4.59388 27.4384 5.36753 26.8738 5.94136L21.7751 11.0385L24.5339 24.7646C24.8866 26.5207 21.481 28.9673 20.5744 26.6408L16.5369 16.2783L11.2941 21.5211C11.5493 24.5845 11.6048 25.6037 9.45694 27.75L6.1924 22.3076L0.75 19.0431C2.89634 16.8952 3.91548 16.9492 6.9789 17.2059L12.2217 11.9646L1.85919 7.9256C-0.467261 7.01903 1.97927 3.6119 3.73537 3.96612L17.4615 6.72485Z" stroke="#E6E9EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="brand-text">AeroMiles</span>
+        </div>
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="register.html" class="btn btn-dark">Register</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <div class="header-text">
+            <h1 class="title">Selamat Datang!</h1>
+            <p class="subtitle">Masuk ke Akun AeroMiles Anda!</p>
+        </div>
+
+        <div class="auth-card">
+            <form action="#" method="POST">
+                <div class="input-group">
+                    <label for="email">Email<span class="text-red">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan Email Anda" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password<span class="text-red">*</span></label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan Password Anda" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+            </form>
+
+            <p class="auth-link">
+                Belum punya akun? <a href="register.html">Daftar di sini</a>
+            </p>
+        </div>
+
+    </main>
+
+</body>
+</html>
