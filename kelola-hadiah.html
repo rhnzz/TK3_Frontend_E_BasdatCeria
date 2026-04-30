@@ -10,39 +10,7 @@
 </head>
 <body class="bg-light">
 
-    <nav class="navbar nav-dashboard">
-        <div class="nav-brand">
-            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.4615 6.72485L22.5586 1.62616C23.1325 1.06164 23.9061 0.746734 24.7111 0.750026C25.516 0.753318 26.2871 1.07454 26.8563 1.64374C27.4255 2.21293 27.7467 2.98398 27.75 3.78893C27.7533 4.59388 27.4384 5.36753 26.8738 5.94136L21.7751 11.0385L24.5339 24.7646C24.8866 26.5207 21.481 28.9673 20.5744 26.6408L16.5369 16.2783L11.2941 21.5211C11.5493 24.5845 11.6048 25.6037 9.45694 27.75L6.1924 22.3076L0.75 19.0431C2.89634 16.8952 3.91548 16.9492 6.9789 17.2059L12.2217 11.9646L1.85919 7.9256C-0.467261 7.01903 1.97927 3.6119 3.73537 3.96612L17.4615 6.72485Z" stroke="#E6E9EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="brand-text">AeroMiles</span>
-        </div>
-
-        <ul class="nav-links">
-            <li><a href="dashboard.html" class="nav-item">Dashboard</a></li>
-            <li><a href="kelola-member.html" class="nav-item">Kelola Member</a></li>
-            <li><a href="kelola-klaim.html" class="nav-item">Kelola Klaim</a></li>
-            <li><a href="kelola-hadiah.html" class="nav-item active">Kelola Hadiah</a></li>
-            <li><a href="kelola-mitra.html" class="nav-item">Kelola Mitra</a></li>
-            <li><a href="laporan.html" class="nav-item">Laporan Transaksi</a></li>
-            <li><a href="profil.html" class="nav-item">Pengaturan Profil</a></li>
-        </ul>
-
-        <div class="nav-profile-group">
-            <div class="avatar-block">
-                <img src="https://ui-avatars.com/api/?name=Mr+X&background=0D8ABC&color=fff" alt="Avatar" class="avatar-img">
-                <div class="avatar-info">
-                    <span class="avatar-name">Mr. X</span>
-                    <span class="avatar-role">Staff</span>
-                </div>
-            </div>
-            
-            <a href="login.html" class="btn btn-dark btn-logout">
-                Logout
-                <span class="material-symbols-outlined icon-small">logout</span>
-            </a>
-        </div>
-    </nav>
+    <div id="navbar-container"></div>
 
     <main class="dashboard-content">
         
@@ -51,8 +19,6 @@
             <div class="flex-row" style="width: auto; gap: 12px; align-items: center;">
                 <select id="filter-penyedia" style="width: 180px; height: 40px;">
                     <option value="all">Semua Penyedia</option>
-                    <option value="Garuda Indonesia">Garuda Indonesia</option>
-                    <option value="TravelokaPartner">TravelokaPartner</option>
                 </select>
                 
                 <select id="filter-status" style="width: 150px; height: 40px;">
@@ -82,213 +48,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-penyedia="Garuda Indonesia" data-status="aktif">
-                        <td><strong>RWD-001</strong></td>
-                        <td><strong>Tiket Domestik PP</strong></td>
-                        <td class="text-gray truncate-text">Tiket domestik ke seluruh pulau di Indonesia tanpa terkecuali</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>Garuda Indonesia</strong>
-                                <span class="badge">airline</span>
-                            </div>
-                        </td>
-                        <td><strong>15,000</strong></td>
-                        <td><strong>2024-01-01 - 2025-12-31</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="TravelokaPartner" data-status="aktif">
-                        <td><strong>RWD-002</strong></td>
-                        <td><strong>Voucher Hotel Rp 500.000</strong></td>
-                        <td class="text-gray truncate-text">Voucher menginap di seluruh jaringan hotel Traveloka</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>TravelokaPartner</strong>
-                                <span class="badge">partner</span>
-                            </div>
-                        </td>
-                        <td><strong>8,000</strong></td>
-                        <td><strong>2024-06-01 - 2025-06-30</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="TravelokaPartner" data-status="berakhir">
-                        <td><strong>RWD-003</strong></td>
-                        <td><strong>Diskon Tiket Kereta</strong></td>
-                        <td class="text-gray truncate-text">Diskon 50% tiket kereta api jarak jauh</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>TravelokaPartner</strong>
-                                <span class="badge">partner</span>
-                            </div>
-                        </td>
-                        <td><strong>3,000</strong></td>
-                        <td class="text-red"><strong>2023-01-01 - 2023-12-31</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="Garuda Indonesia" data-status="aktif">
-                        <td><strong>RWD-004</strong></td>
-                        <td><strong>Tiket Domestik PP</strong></td>
-                        <td class="text-gray truncate-text">Tiket domestik ke seluruh pulau di Indonesia tanpa terkecuali</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>Garuda Indonesia</strong>
-                                <span class="badge">airline</span>
-                            </div>
-                        </td>
-                        <td><strong>15,000</strong></td>
-                        <td><strong>2024-01-01 - 2025-12-31</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="TravelokaPartner" data-status="aktif">
-                        <td><strong>RWD-005</strong></td>
-                        <td><strong>Voucher Hotel Rp 500.000</strong></td>
-                        <td class="text-gray truncate-text">Voucher menginap di seluruh jaringan hotel Traveloka</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>TravelokaPartner</strong>
-                                <span class="badge">partner</span>
-                            </div>
-                        </td>
-                        <td><strong>8,000</strong></td>
-                        <td><strong>2024-06-01 - 2025-06-30</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="TravelokaPartner" data-status="berakhir">
-                        <td><strong>RWD-006</strong></td>
-                        <td><strong>Diskon Tiket Kereta</strong></td>
-                        <td class="text-gray truncate-text">Diskon 50% tiket kereta api jarak jauh</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>TravelokaPartner</strong>
-                                <span class="badge">partner</span>
-                            </div>
-                        </td>
-                        <td><strong>3,000</strong></td>
-                        <td class="text-red"><strong>2023-01-01 - 2023-12-31</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="Garuda Indonesia" data-status="aktif">
-                        <td><strong>RWD-007</strong></td>
-                        <td><strong>Tiket Domestik PP</strong></td>
-                        <td class="text-gray truncate-text">Tiket domestik ke seluruh pulau di Indonesia tanpa terkecuali</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>Garuda Indonesia</strong>
-                                <span class="badge">airline</span>
-                            </div>
-                        </td>
-                        <td><strong>15,000</strong></td>
-                        <td><strong>2024-01-01 - 2025-12-31</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="TravelokaPartner" data-status="aktif">
-                        <td><strong>RWD-008</strong></td>
-                        <td><strong>Voucher Hotel Rp 500.000</strong></td>
-                        <td class="text-gray truncate-text">Voucher menginap di seluruh jaringan hotel Traveloka</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>TravelokaPartner</strong>
-                                <span class="badge">partner</span>
-                            </div>
-                        </td>
-                        <td><strong>8,000</strong></td>
-                        <td><strong>2024-06-01 - 2025-06-30</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="TravelokaPartner" data-status="berakhir">
-                        <td><strong>RWD-009</strong></td>
-                        <td><strong>Diskon Tiket Kereta</strong></td>
-                        <td class="text-gray truncate-text">Diskon 50% tiket kereta api jarak jauh</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>TravelokaPartner</strong>
-                                <span class="badge">partner</span>
-                            </div>
-                        </td>
-                        <td><strong>3,000</strong></td>
-                        <td class="text-red"><strong>2023-01-01 - 2023-12-31</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="Garuda Indonesia" data-status="aktif">
-                        <td><strong>RWD-010</strong></td>
-                        <td><strong>Tiket Domestik PP</strong></td>
-                        <td class="text-gray truncate-text">Tiket domestik ke seluruh pulau di Indonesia tanpa terkecuali</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>Garuda Indonesia</strong>
-                                <span class="badge">airline</span>
-                            </div>
-                        </td>
-                        <td><strong>15,000</strong></td>
-                        <td><strong>2024-01-01 - 2025-12-31</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="TravelokaPartner" data-status="aktif">
-                        <td><strong>RWD-011</strong></td>
-                        <td><strong>Voucher Hotel Rp 500.000</strong></td>
-                        <td class="text-gray truncate-text">Voucher menginap di seluruh jaringan hotel Traveloka</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>TravelokaPartner</strong>
-                                <span class="badge">partner</span>
-                            </div>
-                        </td>
-                        <td><strong>8,000</strong></td>
-                        <td><strong>2024-06-01 - 2025-06-30</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
-                    </tr>
-
-                    <tr data-penyedia="TravelokaPartner" data-status="berakhir">
-                        <td><strong>RWD-012</strong></td>
-                        <td><strong>Diskon Tiket Kereta</strong></td>
-                        <td class="text-gray truncate-text">Diskon 50% tiket kereta api jarak jauh</td>                        <td>
-                            <div class="flex-center gap-xs">
-                                <strong>TravelokaPartner</strong>
-                                <span class="badge">partner</span>
-                            </div>
-                        </td>
-                        <td><strong>3,000</strong></td>
-                        <td class="text-red"><strong>2023-01-01 - 2023-12-31</strong></td>
-                        <td class="action-cell">
-                            <button class="btn-icon-only text-gray btn-edit"><span class="material-symbols-outlined">edit</span></button>                            
-                            <button class="btn-icon-only text-red btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                        </td>
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: #8D9EB8; padding: 24px;">Belum ada data hadiah</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </main>
 
     <div id="reward-modal" class="modal-overlay">
@@ -301,7 +66,6 @@
             </div>
             <div class="modal-body">
                 <form id="reward-form" action="#" method="POST">
-                    
                     <div class="flex-row gap-xs">
                         <div class="input-group flex-1">
                             <label>Nama Hadiah<span class="text-red">*</span></label>
@@ -311,8 +75,6 @@
                             <label>Penyedia<span class="text-red">*</span></label>
                             <select name="id_penyedia" required>
                                 <option value="" disabled selected>Pilih Penyedia</option>
-                                <option value="1">Garuda Indonesia (airline)</option> 
-                                <option value="2">TravelokaPartner (partner)</option>
                             </select>
                         </div>
                     </div>
@@ -358,11 +120,11 @@
                     <div class="flex-row gap-xs">
                         <div class="input-group" style="flex: 0.4;">
                             <label>Kode Hadiah</label>
-                            <input type="text" name="kode_hadiah" value="RWD-001" readonly style="background-color: #F5F5F5; color: #8D9EB8;">
+                            <input type="text" name="kode_hadiah" value="" readonly style="background-color: #F5F5F5; color: #8D9EB8;">
                         </div>
                         <div class="input-group flex-1">
                             <label>Nama Hadiah<span class="text-red">*</span></label>
-                            <input type="text" name="nama" placeholder="Isi Nama Hadiah" value="Tiket Domestik PP"required>
+                            <input type="text" name="nama" placeholder="Isi Nama Hadiah" value="" required>
                         </div>
                     </div>
 
@@ -371,29 +133,27 @@
                             <label>Penyedia<span class="text-red">*</span></label>
                             <select name="id_penyedia" required>
                                 <option value="" disabled selected>Pilih Penyedia</option>
-                                <option value="1" selected>Garuda Indonesia (airline)</option> 
-                                <option value="2">TravelokaPartner (partner)</option>
                             </select>
                         </div>
                         <div class="input-group flex-1">
                             <label>Jumlah Miles<span class="text-red">*</span></label>
-                            <input type="number" name="miles" placeholder="Isi Jumlah Miles" value="15000" min="0" required>
+                            <input type="number" name="miles" placeholder="Isi Jumlah Miles" value="" min="0" required>
                         </div>
                     </div>
 
                     <div class="input-group">
                         <label>Deskripsi Hadiah</label>
-                        <textarea name="deskripsi" placeholder="Isi Deskripsi Hadiah" rows="3">Tiket domestik ke seluruh pulau di Indonesia tanpa terkecuali</textarea>
+                        <textarea name="deskripsi" placeholder="Isi Deskripsi Hadiah" rows="3"></textarea>
                     </div>
 
                     <div class="flex-row gap-xs">
                         <div class="input-group flex-1">
                             <label>Periode Awal<span class="text-red">*</span></label>
-                            <input type="date" name="valid_start_date" value="2024-01-01" required>
+                            <input type="date" name="valid_start_date" value="" required>
                         </div>
                         <div class="input-group flex-1">
                             <label>Periode Akhir<span class="text-red">*</span></label>
-                            <input type="date" name="program_end" value="2025-12-31" required>
+                            <input type="date" name="program_end" value="" required>
                         </div>
                     </div>
                 </form>
@@ -420,7 +180,6 @@
                 </div>
                 <div class="modal-footer" style="margin-top: 24px;">
                     <button type="button" id="delete-modal-cancel" class="btn btn-outline">Batal</button>
-                    
                     <button type="submit" id="delete-modal-confirm" class="btn btn-primary" style="background-color: #C00F0C; border: none;">Hapus</button>
                 </div>
             </form>
@@ -428,82 +187,75 @@
         </div>
     </div>
 
-</body>
-</html>
+    <script>
+        fetch('navbar-staf.html')
+            .then(response => {
+                if (!response.ok) throw new Error("Navbar staf tidak ditemukan");
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
 
-<script>
-    // logika filter
-    const filterPenyedia = document.getElementById('filter-penyedia');
-    const filterStatus = document.getElementById('filter-status');
-    const tableRows = document.querySelectorAll('#hadiah-table tbody tr');
+        const filterPenyedia = document.getElementById('filter-penyedia');
+        const filterStatus = document.getElementById('filter-status');
+        const tableRows = document.querySelectorAll('#hadiah-table tbody tr');
 
-    function applyFilters() {
-        const valPenyedia = filterPenyedia.value;
-        const valStatus = filterStatus.value;
+        function applyFilters() {
+            const valPenyedia = filterPenyedia.value;
+            const valStatus = filterStatus.value;
 
-        tableRows.forEach(row => {
-            const rowPenyedia = row.getAttribute('data-penyedia');
-            const rowStatus = row.getAttribute('data-status');
+            tableRows.forEach(row => {
+                if(row.children[0].colSpan > 1) return; 
 
-            const matchPenyedia = (valPenyedia === 'all') || (rowPenyedia === valPenyedia);
-            const matchStatus = (valStatus === 'all') || (rowStatus === valStatus);
+                const rowPenyedia = row.getAttribute('data-penyedia');
+                const rowStatus = row.getAttribute('data-status');
 
-            if (matchPenyedia && matchStatus) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
+                const matchPenyedia = (valPenyedia === 'all') || (rowPenyedia === valPenyedia);
+                const matchStatus = (valStatus === 'all') || (rowStatus === valStatus);
+
+                if (matchPenyedia && matchStatus) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        filterPenyedia.addEventListener('change', applyFilters);
+        filterStatus.addEventListener('change', applyFilters);
+
+        const tambahButton = document.getElementById('btn-tambah'); 
+        const rewardModal = document.getElementById('reward-modal');
+        const rewardClose = document.getElementById('modal-close');
+        const rewardCancel = document.getElementById('modal-cancel');
+
+        tambahButton.addEventListener('click', () => rewardModal.classList.add('is-visible'));
+        rewardClose.addEventListener('click', () => rewardModal.classList.remove('is-visible'));
+        if(rewardCancel) rewardCancel.addEventListener('click', () => rewardModal.classList.remove('is-visible'));
+
+        document.addEventListener('click', function(e) {
+            if(e.target.closest('.btn-edit')) {
+                document.getElementById('edit-modal').classList.add('is-visible');
             }
         });
-    }
+        document.getElementById('edit-modal-close').addEventListener('click', () => document.getElementById('edit-modal').classList.remove('is-visible'));
+        document.getElementById('edit-modal-cancel').addEventListener('click', () => document.getElementById('edit-modal').classList.remove('is-visible'));
 
-    filterPenyedia.addEventListener('change', applyFilters);
-    filterStatus.addEventListener('change', applyFilters);
-
-
-    // logika add
-    const tambahButton = document.getElementById('btn-tambah'); 
-    const rewardModal = document.getElementById('reward-modal');
-    const rewardClose = document.getElementById('modal-close');
-    const rewardCancel = document.getElementById('modal-cancel');
-
-    tambahButton.addEventListener('click', () => rewardModal.classList.add('is-visible'));
-    rewardClose.addEventListener('click', () => rewardModal.classList.remove('is-visible'));
-    if(rewardCancel) rewardCancel.addEventListener('click', () => rewardModal.classList.remove('is-visible'));
-
-    // logika edit
-    const editButtons = document.querySelectorAll('.btn-edit'); 
-    const editModal = document.getElementById('edit-modal');
-    const editClose = document.getElementById('edit-modal-close');
-    const editCancel = document.getElementById('edit-modal-cancel'); 
-
-    editButtons.forEach(button => {
-        button.addEventListener('click', () => editModal.classList.add('is-visible'));
-    });
-    editClose.addEventListener('click', () => editModal.classList.remove('is-visible'));
-    if(editCancel) editCancel.addEventListener('click', () => editModal.classList.remove('is-visible'));
-
-    // logika delete
-    const deleteButtons = document.querySelectorAll('.btn-delete'); 
-    const deleteModal = document.getElementById('delete-modal');
-    const deleteCancel = document.getElementById('delete-modal-cancel');
-    const deleteClose = document.getElementById('delete-modal-close');
-    const deleteConfirm = document.getElementById('delete-modal-confirm'); 
-
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', () => deleteModal.classList.add('is-visible'));
-    });
-    if(deleteCancel) deleteCancel.addEventListener('click', () => deleteModal.classList.remove('is-visible'));
-    if(deleteClose) deleteClose.addEventListener('click', () => deleteModal.classList.remove('is-visible'));
-
-    if(deleteConfirm) {
-        deleteConfirm.addEventListener('click', () => {
-            deleteModal.classList.remove('is-visible');
+        document.addEventListener('click', function(e) {
+            if(e.target.closest('.btn-delete')) {
+                document.getElementById('delete-modal').classList.add('is-visible');
+            }
         });
-    }
+        document.getElementById('delete-modal-close').addEventListener('click', () => document.getElementById('delete-modal').classList.remove('is-visible'));
+        document.getElementById('delete-modal-cancel').addEventListener('click', () => document.getElementById('delete-modal').classList.remove('is-visible'));
 
-    window.addEventListener('click', (e) => {
-        if (e.target === rewardModal) rewardModal.classList.remove('is-visible');
-        if (e.target === editModal) editModal.classList.remove('is-visible');
-        if (e.target === deleteModal) deleteModal.classList.remove('is-visible');
-    });
-</script>
+        window.addEventListener('click', (e) => {
+            if (e.target === rewardModal) rewardModal.classList.remove('is-visible');
+            if (e.target === document.getElementById('edit-modal')) document.getElementById('edit-modal').classList.remove('is-visible');
+            if (e.target === document.getElementById('delete-modal')) document.getElementById('delete-modal').classList.remove('is-visible');
+        });
+    </script>
+</body>
+</html>
