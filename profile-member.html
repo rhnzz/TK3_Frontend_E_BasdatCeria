@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Profil - AeroMiles</title>
+    <!-- Hubungkan ke file CSS kelompokmu -->
+    <link rel="stylesheet" href="global.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navbar dilewati sesuai permintaanmu karena bakal ada navbar sendiri -->
+
+    <div class="main-content">
+        <div class="header-text">
+            <h1 class="title">Pengaturan Profil</h1>
+        </div>
+
+        <!-- SEKSI DATA PROFIL -->
+        <div class="auth-card">
+            <div class="section-title">
+                <h3>Data Profil</h3>
+            </div>
+            
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" value="x@example.com" readonly>
+            </div>
+
+            <div class="input-group">
+                <label>Salutasi</label>
+                <select>
+                    <option value="Mr">Mr.</option>
+                    <option value="Mrs" selected>Mrs.</option>
+                    <option value="Ms">Ms.</option>
+                </select>
+            </div>
+
+            <div class="flex-row">
+                <div class="input-group flex-1">
+                    <label>Nomor Member</label>
+                    <input type="text" value="M0001" readonly>
+                </div>
+                <div class="input-group flex-1">
+                    <label>Tanggal Bergabung</label>
+                    <input type="text" value="2024-01-15" readonly>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Kewarganegaraan</label>
+                <select>
+                    <option selected>Indonesia</option>
+                    <option>Luar Negeri</option>
+                </select>
+            </div>
+
+            <div class="flex-row">
+                <div class="input-group" style="width: 120px;">
+                    <label>Kode Negara</label>
+                    <select>
+                        <option selected>+62</option>
+                    </select>
+                </div>
+                <div class="input-group flex-1">
+                    <label>Nomor HP</label>
+                    <input type="text" value="8123456789">
+                </div>
+            </div>
+
+            <div class="input-group" style="width: 50%;">
+                <label>Tanggal Lahir</label>
+                <input type="date" value="1990-05-15">
+            </div>
+
+            <button class="btn btn-primary btn-full">Simpan</button>
+        </div>
+
+        <!-- SEKSI UBAH PASSWORD -->
+        <div class="auth-card margin-top-md">
+            <div class="section-title">
+                <h3>Ubah Password</h3>
+            </div>
+            <!-- Trigger Pop Up -->
+            <button class="btn btn-outline btn-full" onclick="openModal()">Ubah Password</button>
+        </div>
+    </div>
+
+    <!-- POP UP (MODAL) UBAH PASSWORD -->
+    <!-- Class modal-overlay sudah ada di CSS-mu tapi belum ada isinya, 
+         aku tambahkan style inline sedikit untuk fungsinya ya -->
+    <div class="modal-overlay" id="passwordModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+        <div class="auth-card" style="position: relative;">
+            <button onclick="closeModal()" style="position: absolute; right: 20px; top: 20px; background: none; border: none; cursor: pointer; font-size: 20px;">✕</button>
+            
+            <div class="section-title">
+                <h3>Ubah Password</h3>
+            </div>
+
+            <div class="input-group">
+                <label>Password Lama</label>
+                <input type="password" placeholder="Masukkan password lama">
+            </div>
+
+            <div class="input-group">
+                <label>Password Baru</label>
+                <input type="password" placeholder="Masukkan password baru">
+            </div>
+
+            <div class="input-group">
+                <label>Konfirmasi Password Baru</label>
+                <input type="password" placeholder="Ulangi password baru">
+            </div>
+
+            <button class="btn btn-primary btn-full">Simpan Password</button>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi buat buka & tutup pop-up password
+        function openModal() {
+            document.getElementById('passwordModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('passwordModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
