@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Klaim - AeroMiles</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        .table-container {
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #D9D9D9;
+            margin-top: 20px;
+            overflow-x: auto; /* Penting karena kolomnya banyak */
+        }
+        table {
+            width: 100%;
+            min-width: 1200px; /* Biar kolom nggak dempet-dempet */
+            border-collapse: collapse;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: #072C64;
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid #06285B;
+            font-size: 13px;
+        }
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .status-waiting { background-color: #E5A000; }
+        .status-rejected { background-color: #C00F0C; }
+        .status-approved { background-color: #009951; }
+
+        /* Action Buttons */
+        .btn-edit { color: #000; cursor: pointer; margin-right: 10px; font-size: 18px; }
+        .btn-delete { color: #EA5A47; cursor: pointer; font-size: 18px; }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="main-content">
+        <div class="header-text" style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+                <h1 class="title">Kelola Klaim Missing Miles</h1>
+                <button class="btn btn-primary" style="margin-top: 15px;">🔍 Filter & Urutkan</button>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('claimModal')">Ajukan Klaim Baru</button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kode Klaim</th>
+                        <th>Member</th>
+                        <th>Maskapai</th>
+                        <th>Rute</th>
+                        <th>Tanggal</th>
+                        <th>No. Penerbangan</th>
+                        <th>Kelas</th>
+                        <th>Waktu Pengajuan</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Contoh Status: Menunggu -->
+                    <tr>
+                        <td>CLM-001</td>
+                        <td><strong>John W. Doe</strong><br><small>john@example.com</small></td>
+                        <td>GA</td>
+                        <td>CGK → DPS</td>
+                        <td>2024-10-01</td>
+                        <td>GA404</td>
+                        <td>Business</td>
+                        <td>2024-10-05 18:45</td>
+                        <td><span class="status-badge status-waiting">Menunggu 🕒</span></td>
+                        <td>
+                            <span class="btn-edit" onclick="openModal('editModal')">📝</span>
+                            <span class="btn-delete" onclick="openModal('deleteModal')">🗑️</span>
+                        </td>
+                    </tr>
+                    <!-- Contoh Status: Ditolak -->
+                    <tr>
+                        <td>CLM-002</td>
+                        <td><strong>John W. Doe</strong></td>
+                        <td>GA</td>
+                        <td>SIN → CGK</td>
+                        <td>2024-09-15</td>
+                        <td>GA821</td>
+                        <td>Economy</td>
+                        <td>2024-09-20 10:00</td>
+                        <td><span class="status-badge status-rejected">Ditolak ❌</span></td>
+                        <td>
+                            <span class="btn-edit" onclick="openModal('editModal')">📝</span>
+                            <span class="btn-delete" onclick="openModal('deleteModal')">🗑️</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MODAL: AJUKAN KLAIM BARU -->
+    <div class="modal-overlay" id="claimModal">
+        <div class="auth-card" style="width: 500px;">
+            <div class="section-title"><h3>Ajukan Klaim Baru</h3></div>
+            <div class="input-group">
+                <label>Maskapai</label>
+                <select class="btn-full" style="padding: 10px; border: 1px solid #D9D9D9; border-radius: 8px;">
+                    <option>GA - Garuda Indonesia</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Kelas Kabin</label>
+                <select class="btn-full" style="padding: 10px; border: 1px solid #D9D9D9; border-radius: 8px;">
+                    <option>Premium Economy</option>
+                </select>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="input-group"><label>Bandara Asal</label><input type="text" value="SIN"></div>
+                <div class="input-group"><label>Bandara Tujuan</label><input type="text" value="CGK"></div>
+            </div>
+            <div class="input-group"><label>Tanggal Penerbangan</label><input type="date"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="input-group"><label>Flight Number</label><input type="text" placeholder="AA 111"></div>
+                <div class="input-group"><label>Nomor Tiket</label><input type="text"></div>
+            </div>
+            <div class="input-group"><label>PNR</label><input type="text"></div>
+            <button class="btn btn-primary btn-full">Simpan</button>
+            <button class="btn btn-full" onclick="closeModal('claimModal')" style="margin-top: 10px; border: 1px solid #000;">Batal</button>
+        </div>
+    </div>
+
+    <!-- MODAL: EDIT KLAIM (Mirip Form Baru tapi Value Terisi) -->
+    <div class="modal-overlay" id="editModal">
+        <div class="auth-card" style="width: 500px; border: 2px solid #76A9FA;">
+            <div class="section-title"><h3>Edit Klaim</h3></div>
+            <!-- Form sama dengan atas, tinggal ganti judul -->
+            <button class="btn btn-primary btn-full">Update Klaim</button>
+            <button class="btn btn-full" onclick="closeModal('editModal')" style="margin-top: 10px;">Batal</button>
+        </div>
+    </div>
+
+    <!-- MODAL: KONFIRMASI HAPUS -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="auth-card" style="width: 400px; text-align: center;">
+            <h3 style="color: #000; margin-bottom: 10px;">Batalkan Klaim?</h3>
+            <p style="color: #757575; margin-bottom: 25px;">Klaim akan dihapus secara permanen.</p>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-full" onclick="closeModal('deleteModal')" style="border: 1px solid #000;">Batal</button>
+                <button class="btn btn-primary btn-full" style="background-color: #072C64;">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    </script>
+</body>
+</html>

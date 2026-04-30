@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staf - Kelola Klaim AeroMiles</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        /* Navbar Staf Styles */
+        .staff-nav {
+            background-color: #051F47;
+            height: 94px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            justify-content: space-between;
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-item {
+            color: #F3F3F3;
+            padding: 8px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+        .nav-item.active {
+            background: white;
+            color: #5A5A5A;
+            font-weight: 500;
+        }
+        .logout-btn {
+            background: #06285B;
+            border: 1px solid #D9D9D9;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Container Table */
+        .content-body {
+            padding: 40px 70px;
+            background-color: #F5F5F5;
+            min-height: calc(100vh - 94px);
+        }
+        .table-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+            margin-top: 25px;
+            overflow-x: auto;
+        }
+        
+        /* Action Buttons Staf */
+        .action-approve { color: #009951; cursor: pointer; font-size: 20px; margin-right: 15px; }
+        .action-reject { color: #C70000; cursor: pointer; font-size: 20px; }
+        
+        .summary-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR STAF -->
+    <nav class="staff-nav">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="width: 27px; height: 23px; border: 2px solid #E6E9EE;"></div>
+            <span style="color: white; font-size: 28px; font-weight: 700;">AeroMiles</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-item">Dashboard</a>
+            <a href="#" class="nav-item">Kelola Member</a>
+            <a href="#" class="nav-item active">Kelola Klaim</a>
+            <a href="#" class="nav-item">Kelola Hadiah</a>
+            <a href="#" class="nav-item">Laporan</a>
+        </div>
+        <button class="logout-btn">Logout 🚪</button>
+    </nav>
+
+    <div class="content-body">
+        <h1 style="font-size: 48px; color: #03122A; margin-bottom: 30px;">Kelola Klaim Missing Miles</h1>
+        
+        <button class="btn btn-primary" style="background: #072C64;">
+            📊 Filter & Urutkan Pencarian
+        </button>
+
+        <div class="table-card">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="text-align: left; border-bottom: 2px solid #eee;">
+                        <th style="padding: 15px;">Kode</th>
+                        <th>Member</th>
+                        <th>Maskapai</th>
+                        <th>Rute</th>
+                        <th>No. Tiket</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 15px;">CLM-002</td>
+                        <td><strong>Alex Xander</strong><br><small>alex@email.com</small></td>
+                        <td>GA</td>
+                        <td>SIN → CGK</td>
+                        <td>001234567</td>
+                        <td><span class="status-badge status-waiting">Menunggu</span></td>
+                        <td>
+                            <span class="action-approve" onclick="openModal('approveModal')">✅</span>
+                            <span class="action-reject" onclick="openModal('rejectModal')">❌</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MODAL: SETUJUI KLAIM -->
+    <div class="modal-overlay" id="approveModal">
+        <div class="auth-card" style="width: 500px;">
+            <h3>Setujui Klaim</h3>
+            <p style="color: #757575; font-size: 14px;">Miles akan ditambahkan ke akun member sesuai rute dan kelas kabin.</p>
+            
+            <div class="summary-box">
+                <strong>Klaim:</strong> CLM-002<br>
+                <strong>Member:</strong> Alex Xander<br>
+                <strong>Rute:</strong> SIN → CGK<br>
+                <strong>Kelas:</strong> Economy
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-full" onclick="closeModal('approveModal')" style="border: 1px solid #000;">Batal</button>
+                <button class="btn btn-primary btn-full">Setujui</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: TOLAK KLAIM -->
+    <div class="modal-overlay" id="rejectModal">
+        <div class="auth-card" style="width: 500px;">
+            <h3>Tolak Klaim</h3>
+            <p style="color: #757575; font-size: 14px;">Klaim akan ditolak dan member akan diinformasikan.</p>
+            
+            <div class="summary-box">
+                <strong>Klaim:</strong> CLM-002<br>
+                <strong>Member:</strong> Alex Xander<br>
+                <strong>Rute:</strong> SIN → CGK
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-full" onclick="closeModal('rejectModal')" style="border: 1px solid #000;">Batal</button>
+                <button class="btn btn-full" style="background: #C70000; color: white;">Tolak</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    </script>
+</body>
+</html>
