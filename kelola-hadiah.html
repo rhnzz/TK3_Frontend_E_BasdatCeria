@@ -195,6 +195,11 @@
             })
             .then(data => {
                 document.getElementById('navbar-container').innerHTML = data;
+                
+                const activeLink = document.querySelector('.nav-item[href="kelola-hadiah.html"]');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
             })
             .catch(error => console.error('Error loading navbar:', error));
 

@@ -64,8 +64,11 @@
             .then(data => {
                 document.getElementById('navbar-container').innerHTML = data;
                 
-                const activeLink = document.querySelector('.nav-item[href="beli-package.html"]');
-                if (activeLink) activeLink.classList.add('active');
+                const activeLink = document.querySelector('.nav-links .nav-item[href="beli-package.html"]');
+                
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
             })
             .catch(error => console.error('Error loading navbar:', error));
 
