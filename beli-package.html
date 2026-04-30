@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beli Package - AeroMiles</title>
     <link rel="stylesheet" href="global.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -26,7 +27,7 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="package-table-body">
                     <tr>
                         <td colspan="4" style="text-align: center; color: #8D9EB8; padding: 24px;">Belum ada paket miles tersedia</td>
                     </tr>
@@ -35,13 +36,62 @@
         </div>
     </main>
 
+    <div id="purchase-modal" class="modal-overlay">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title-sm">Konfirmasi Pembelian</h3>
+                <button id="modal-close" class="btn-icon-only text-gray">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc-sm">Apakah Anda yakin ingin membeli paket <strong id="selected-package-id">-</strong>?</p>
+                <p class="warning-text text-gray" style="margin-top: 12px;">Setelah konfirmasi, saldo Award Miles Anda akan bertambah secara otomatis.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-batal" class="btn btn-outline">Batal</button>
+                <button type="button" id="btn-konfirmasi" class="btn btn-primary">Beli Sekarang</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         fetch('navbar-member.html')
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) throw new Error("Navbar member tidak ditemukan");
+                return response.text();
+            })
             .then(data => {
                 document.getElementById('navbar-container').innerHTML = data;
+                
+                const activeLink = document.querySelector('.nav-item[href="beli-package.html"]');
+                if (activeLink) activeLink.classList.add('active');
             })
             .catch(error => console.error('Error loading navbar:', error));
+
+        const purchaseModal = document.getElementById('purchase-modal');
+        const closeModal = () => purchaseModal.classList.remove('is-visible');
+        
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-beli');
+            if (btn) {
+                const packageId = btn.closest('tr').cells[0].innerText;
+                document.getElementById('selected-package-id').innerText = packageId;
+                purchaseModal.classList.add('is-visible');
+            }
+        });
+
+        document.getElementById('modal-close').addEventListener('click', closeModal);
+        document.getElementById('btn-batal').addEventListener('click', closeModal);
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === purchaseModal) closeModal();
+        });
+
+        document.getElementById('btn-konfirmasi').addEventListener('click', () => {
+            alert('Permintaan pembelian sedang diproses ke database...');
+            closeModal();
+        });
     </script>
 </body>
 </html>
