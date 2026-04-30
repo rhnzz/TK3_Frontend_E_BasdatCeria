@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="global.css">
 </head>
 <body class="bg-light">
-
+    <div id="navbar-placeholder"></div>
     <!-- Navbar dilewati sesuai permintaanmu karena bakal ada navbar sendiri -->
 
     <div class="main-content">
@@ -125,6 +125,12 @@
             document.getElementById('passwordModal').style.display = 'none';
         }
     </script>
-
+    <script>
+    fetch('navbar-member.html') // Sesuaikan nama filenya
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
 </body>
 </html>

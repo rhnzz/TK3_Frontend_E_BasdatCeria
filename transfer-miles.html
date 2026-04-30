@@ -5,8 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transfer Miles - AeroMiles</title>
     <link rel="stylesheet" href="global.css">
+
     <style>
-        /* Sedikit tambahan khusus buat tabel history agar rapi */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* FIX UTAMA BIAR GA KETENGAH */
+        .main-content {
+            width: 100%;
+            max-width: 100%;
+            padding: 30px 40px;
+            box-sizing: border-box;
+        }
+
+        /* HEADER RAPI KIRI - KANAN */
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .title {
+            margin: 0;
+        }
+
+        /* TABLE */
         .table-container {
             width: 100%;
             background: white;
@@ -15,46 +42,139 @@
             margin-top: 20px;
             overflow-x: auto;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            text-align: left;
         }
+
         th {
             background-color: #f8f9fa;
             color: #072C64;
             padding: 15px;
             border-bottom: 2px solid #06285B;
+            text-align: left;
         }
+
         td {
             padding: 15px;
             border-bottom: 1px solid #eee;
             font-size: 14px;
         }
+
+        /* TEXT */
         .text-danger { color: #C00F0C; font-weight: bold; }
         .text-success { color: #14AE5C; font-weight: bold; }
+
+        /* BADGE */
         .badge {
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 12px;
-            text-align: center;
             display: inline-block;
             min-width: 70px;
+            text-align: center;
         }
-        .badge-kirim { border: 1px solid #072C64; color: #072C64; }
-        .badge-terima { background: #072C64; color: white; }
+
+        .badge-kirim {
+            border: 1px solid #072C64;
+            color: #072C64;
+        }
+
+        .badge-terima {
+            background: #072C64;
+            color: white;
+        }
+
+        /* BUTTON */
+        .btn {
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #072C64;
+            color: white;
+        }
+
+        .btn-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 500px;
+            position: relative;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 1px solid #D9D9D9;
+            border-radius: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-flex button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
+
 <body class="bg-light">
 
+    <!-- NAVBAR (TIDAK DIHAPUS) -->
+    <div id="navbar-placeholder"></div>
+
     <div class="main-content">
-        <div class="header-text" style="display: flex; justify-content: space-between; align-items: center;">
+
+        <!-- HEADER -->
+        <div class="header-flex">
             <h1 class="title">Transfer Miles</h1>
-            <!-- Tombol Transfer Baru -->
-            <button class="btn btn-primary" onclick="openTransferModal()">+ Transfer Baru</button>
+            <button class="btn btn-primary" onclick="openTransferModal()">
+                + Transfer Baru
+            </button>
         </div>
 
-        <!-- TABEL HISTORY -->
+        <!-- TABLE -->
         <div class="table-container">
             <table>
                 <thead>
@@ -68,7 +188,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Row 1 -->
                     <tr>
                         <td>2024-10-01</td>
                         <td>
@@ -80,7 +199,7 @@
                         <td><span class="badge badge-kirim">Kirim</span></td>
                         <td><button class="btn-icon">🗑️</button></td>
                     </tr>
-                    <!-- Row 2 -->
+
                     <tr>
                         <td>2024-10-01</td>
                         <td>
@@ -97,14 +216,12 @@
         </div>
     </div>
 
-    <!-- POP UP (MODAL) TRANSFER BARU -->
-    <div class="modal-overlay" id="transferModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
-        <div class="auth-card" style="position: relative; width: 500px;">
-            <button onclick="closeTransferModal()" style="position: absolute; right: 20px; top: 20px; background: none; border: none; cursor: pointer; font-size: 20px;">✕</button>
-            
-            <div class="section-title">
-                <h3>Transfer Miles</h3>
-            </div>
+    <!-- MODAL -->
+    <div class="modal-overlay" id="transferModal">
+        <div class="auth-card">
+            <button onclick="closeTransferModal()" style="position:absolute; right:15px; top:15px; background:none; border:none; font-size:20px; cursor:pointer;">✕</button>
+
+            <h3>Transfer Miles</h3>
 
             <div class="input-group">
                 <label>Email Penerima</label>
@@ -126,13 +243,21 @@
     </div>
 
     <script>
-        // Fungsi buat buka & tutup pop-up transfer
         function openTransferModal() {
             document.getElementById('transferModal').style.display = 'flex';
         }
+
         function closeTransferModal() {
             document.getElementById('transferModal').style.display = 'none';
         }
+    </script>
+
+    <script>
+        fetch('navbar-member.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
     </script>
 
 </body>
