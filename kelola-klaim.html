@@ -69,22 +69,7 @@
     </style>
 </head>
 <body>
-
-    <!-- NAVBAR STAF -->
-    <nav class="staff-nav">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <div style="width: 27px; height: 23px; border: 2px solid #E6E9EE;"></div>
-            <span style="color: white; font-size: 28px; font-weight: 700;">AeroMiles</span>
-        </div>
-        <div class="nav-links">
-            <a href="#" class="nav-item">Dashboard</a>
-            <a href="#" class="nav-item">Kelola Member</a>
-            <a href="#" class="nav-item active">Kelola Klaim</a>
-            <a href="#" class="nav-item">Kelola Hadiah</a>
-            <a href="#" class="nav-item">Laporan</a>
-        </div>
-        <button class="logout-btn">Logout 🚪</button>
-    </nav>
+    <div id="navbar-placeholder"></div>
 
     <div class="content-body">
         <h1 style="font-size: 48px; color: #03122A; margin-bottom: 30px;">Kelola Klaim Missing Miles</h1>
@@ -166,6 +151,13 @@
     <script>
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    </script>
+    <script>
+    fetch('navbar-staf.html') // Sesuaikan nama filenya
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        });
     </script>
 </body>
 </html>
