@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informasi Tier - AeroMiles</title>
     <link rel="stylesheet" href="global.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -16,17 +17,17 @@
             <h1 class="page-title">Informasi Tier & Keuntungan</h1>
             <div class="flex-center gap-xs">
                 <span class="text-gray">Tier Anda Saat Ini:</span>
-                <span class="badge">-</span>
+                <span id="current-tier-badge" class="badge">[Tier]</span>
             </div>
         </div>
 
         <div class="table-card section-title margin-top-md" style="margin-bottom: 24px;">
             <h3>Progres Menuju Tier Selanjutnya</h3>
-            <p>Anda membutuhkan <strong class="text-red">0 Total Miles</strong> lagi untuk naik level.</p>
+            <p>Anda membutuhkan <strong id="miles-needed" class="text-red">0</strong> Total Miles lagi untuk naik level.</p>
         </div>
 
         <div class="table-card">
-            <table class="data-table">
+            <table class="data-table" id="tier-table">
                 <thead>
                     <tr>
                         <th>ID Tier</th>
@@ -35,9 +36,9 @@
                         <th>Min. Tier Miles</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tier-table-body">
                     <tr>
-                        <td colspan="4" style="text-align: center; color: #8D9EB8; padding: 24px;">Data tier tidak ditemukan</td>
+                        <td colspan="4" style="text-align: center; color: #8D9EB8; padding: 24px;">Memuat data tier...</td>
                     </tr>
                 </tbody>
             </table>
@@ -46,11 +47,18 @@
 
     <script>
         fetch('navbar-member.html')
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) throw new Error("Navbar member tidak ditemukan");
+                return response.text();
+            })
             .then(data => {
                 document.getElementById('navbar-container').innerHTML = data;
+                
+                const activeLink = document.querySelector('.nav-item[href="info-tier.html"]');
+                if (activeLink) activeLink.classList.add('active');
             })
             .catch(error => console.error('Error loading navbar:', error));
+
     </script>
 </body>
 </html>
